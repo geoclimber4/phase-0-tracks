@@ -18,7 +18,9 @@ cite {
 image, figure, and figcaption CSS if you'd like, 
 but it's optional! */
 img {
-  width: 100%;
+	display:block;
+	margin:0 auto;
+ 	width: 80%;
 }
 
 figure {
@@ -29,4 +31,34 @@ figure {
 figcaption {
   font-style: italic;
   text-align: right;
+}
+
+body{
+	max-width: 960px;
+}
+
+main{
+	width:80%;
+}
+
+#external-links{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width:20%;
+  vertical-align: middle;
+  display: block;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+  h1{
+  	font-size: .8em;
+  }
+  #external-links{
+  	position:relative;
+  	width:100%;
+  }
 }
