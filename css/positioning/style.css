@@ -1,5 +1,35 @@
-#h1 {
-	color:blue;
-	text-align: center
+h1 {
+	color: blue;
+	text-align: center;
 }
 
+.wrapper {
+	margin: auto;
+	z-index: -2;
+	position:relative;
+	height: 500px;
+	width: 500px;
+	background-color: beige;
+}
+
+.octopus {
+	margin-top:20%;
+	margin-left:20%;
+	position: absolute;
+
+	z-index: -1;
+}
+
+.hat {
+	margin-top: 3%;
+	margin-left: 18%;
+	position: absolute;
+	z-index: 1;
+}
+
+.glasses {
+	margin-top: 40%;
+	margin-left: 29%;
+	position: absolute;
+	z-index: 2;
+}
