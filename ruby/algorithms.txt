@@ -1,0 +1,12 @@
+Robot Elevator Algorithm:
+-Walk up to elevator
+	-If floor desired is above you push the top button
+	-Else floor desires is below you push the bottom button
+-Enter elevator when doors open and face button console
+-Push number/letter of floor desired
+-Query other people/robots in elevator for their desired floor:
+	-If other numbers are given, push the button matching that number
+	-Else do nothing.
+-Push door close button
+-Do nothing Until number on video screen matches desired floor.
+-Exit when door opens.
