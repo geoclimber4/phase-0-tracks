@@ -35,13 +35,17 @@ until num == 0
 	insurance = boolean(insurance)
 	
 
-	#until allergy == "done"
-	#	puts "Enter your allergies one at a time. Type done when complete"
-	#	allergy = gets.chomp
-	#	if allergy == "sunshine"
-	#		puts "Probably a vampire"
-	#	end
-	#end
+	allergy = nil
+	
+until allergy == "done"
+	puts "Enter your allergies one at a time. Type done when complete"
+	allergy = gets.chomp
+		if allergy == "sunshine"
+			puts "Probably a vampire"
+			allergy = "done"
+		end
+end
+puts "complete"
 
 	puts emp_name
 	puts age
@@ -63,3 +67,4 @@ puts "Next employee please"
 num = num-1
 end
 puts "all done!"
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
