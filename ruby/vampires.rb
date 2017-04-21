@@ -33,7 +33,14 @@ until num == 0
 	puts "Would you like to enroll in the company's health insurance?"
 	insurance = gets.chomp
 	insurance = boolean(insurance)
-
+	
+	until allergy == "done"
+		puts "Enter your allergies one at a time. Type done when complete"
+		allergy = gets.chomp
+		if allergy == "sunshine"
+			puts "Probably a vampire"
+		end
+	end	
 	puts emp_name
 	puts age
 	puts birth_year
