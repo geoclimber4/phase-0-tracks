@@ -1,5 +1,5 @@
 
-
+#vampire processing ruby program
 puts "How many employees will be processed?"
 num = gets.chomp.to_i
 until num == 0
