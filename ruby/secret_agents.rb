@@ -30,14 +30,15 @@ end
 #Driver Code
 puts "Would you like to encrypt or decrypt a password?"
 pass = gets.chomp
-if pass == encrypt
+
+if pass == "encrypt"
 	puts "What is the password?"
 	string = gets.chomp
-	p encrypt (string)
-elsif pass == decrypt
+	p encrypt(string)
+elsif pass == "decrypt"
 	puts "What is the password?"
 	str = gets.chomp
-	p decrypt (str)
+	p decrypt(str)
 else
 	puts "I'm sorry, I didn't understand you."
 end
