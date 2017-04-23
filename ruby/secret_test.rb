@@ -8,16 +8,27 @@ string = gets.chomp
 
 def encrypt(string)
 	#indexes string for each letter (three letter max)
-	puts string[0].next + string[1].next + string[2].next
+	
+	if string[0] == "z"
+		string[0] = "a"
+		puts string[0] + string[1].next + string[2].next
+	else	
+		puts string[0].next + string[1].next + string[2].next
+	end
 end	
 
 #calls method
 puts encrypt(string)
 
 #A decrypt method that reverses the process above. 
-puts "Give me another string"
-string2 = gets.chomp
+	puts "give me three letters"
+	str = gets.chomp
 
-def decrypt(string2)
+def decrypt(str)
 
+	alpha = "abcdefghijklmnopqrstuvwxyz"
+	p alpha[(alpha.index(str[0]) -1)] + alpha[(alpha.index(str[1]) -1)] + alpha[(alpha.index(str[2]) -1)]
 end
+p decrypt(str)
+#Release 4
+#p decrypt(encrypt("swo"))
