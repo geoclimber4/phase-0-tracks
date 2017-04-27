@@ -68,6 +68,7 @@ else
 		puts "Results inconclusive"
 	end
 end
+
 puts "Next employee please"
 num = num-1
 end
