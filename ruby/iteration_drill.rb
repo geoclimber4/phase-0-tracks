@@ -150,36 +150,11 @@ p new_hash
 # "Saiga Antelope"
 # Do not use any special built-in methods.
 
-# hash.each do |x,y| 
-# 	animal = "Dodo"
-	
-# 	if x == animal
-# 		extinct = true
-# 	else
-# 		extinct = false
-# 	end
-# p extinct
-
-
-# def extinction_check (hash)
-# n = 0
-# extinct = false
-# until ( n > 4 ) || (extinct == true)
-# hash.each do |x,y| 
-# 	animal = "Dodo"
-	
-# 	if x == animal
-# 		extinct = true
-# 	else
-# 		extinct = false
-# 	end
-# p extinct
-# n += 1
-# end
-# end
-# end
-# p extinction_check(extinct_animals)
-
+extinct_animals.each do |x,y|
+	if x == "Dodo"
+		puts "extinct"
+	end
+end
 # ----
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
