@@ -96,6 +96,19 @@ puts itemUpdate(newList, "Lemonade", 2)
 puts itemDelete(newList, "Lemonade")
 puts itemUpdate(newList, "Ice Cream", 1)
 listPrint(newList)
-  
+
+#Release 4: Reflect
+# What did you learn about pseudocode from working on this challenge?
+  # I learned that pseudocode is extremely important to break code into readable and actionable pieces. 
+# What are the tradeoffs of using arrays and hashes for this challenge?
+  # Arrays are great because they are easy to cycle through and recall, but hashes are more useful to recal a invofmation tied to a value in an unordered list 
+# What does a method return?
+  # For our purpose, a method returns whatever the last value of the code is. For example, a method ending in a puts would return a nil
+# What kind of things can you pass into methods as arguments?
+  # We passed a hash, an array, and variables into methods
+# How can you pass information between methods?
+  # We passed the information (hashes and variables) between the methods seperately.
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+  # This was the first challenge I felt comfortable using block code for a .each iteration which felt great. I also am still a little iffy on hashes with specific terminology. I also still have a lot more to do in terms of practicing pseudocode.
   
   
