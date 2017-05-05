@@ -1,56 +1,76 @@
-#Array created for output of spy names:
-code_names = []
+#Create a method that takes a spy's real name and converts it by swapping first and last name and changes vowels to next vowl and consonant to next consonant
 
-#loop created for input of multiple names
-user_input = "no"
-until user_input == "quit"
-
-#Release 0
+#Release 0: Name Swapper Method
 #Take spy_name and create fake name
 #swap first and last name
-puts "What is the spy's name?"
-spy_name = gets.chomp
-spy_array = spy_name.split(' ')
-spy_array.rotate!
-spy_name_new = spy_array*" "
+
+def name_swapper(spy_name)
+  #create array to and put first name last name in.
+  spy_array = spy_name.split(' ')
+  #Flips the array (last name then first name)
+  spy_array.rotate!
+  spy_name_new = spy_array*" "
+  return spy_name_new
+end
+
 
 #Release 0 Part 2
 #Change all of the vowels (a,e,i,o,u) to the next vowel
 #Change all of the consonants to the next consonant
 
-def next_vowel(str)
-
-# vowel string with extra a to handle loop cases for u
-vowel = "aeioua"
-#no_vowel string with extra b to handle loop cases for z
-no_vowel = "bcdfghjklmnpqrstvwxyzb"
-index = 0
-  while index < str.length
-#if statement to alternate handle flow from vowels, consonants, and spaces
-    if str[index].include?("a") || str[index].include?("e") || str[index].include?("i") || str[index].include?("o") || str[index].include?("u")
-      str[index] = vowel[(vowel.index(str[index])+1)]
-#This line added to handle space character in names
-    elsif str[index] == " "
-      str[index] == " "
-    else
-      str[index] = no_vowel[(no_vowel.index(str[index])+1)]
-    end
-  index += 1
+def spy_letter_encrypt(spy_name)
+  # vowel string with extra a to handle loop cases for u
+  vowel = "aeioua"
+  #no_vowel string with extra b to handle loop cases for z
+  no_vowel = "bcdfghjklmnpqrstvwxyzb"
+  index = 0
+  while index < spy_name.length
+  #if statement to alternate handle flow from vowels, consonants, and spaces
+        if spy_name[index].include?("a") || spy_name[index].include?("e") || spy_name[index].include?("i") || spy_name[index].include?("o") || spy_name[index].include?("u")
+          spy_name[index] = vowel[(vowel.index(spy_name[index])+1)]
+  #This line added to handle space character in names
+      elsif spy_name[index] == " "
+        spy_name[index] = " "
+      else
+        spy_name[index] = no_vowel[(no_vowel.index(spy_name[index])+1)]
+      end
+    index += 1
   end
-  p str
+  return spy_name
 end
 
-#variable x added to avoid running method twice to input into array
-x = next_vowel(spy_name_new)
-p "#{spy_name} is also known as #{x}"
+#hash created outside of loop to store original user names and their corresponding value
+spy_hash = {}
 
-code_names.push(x)
+#Driver Code
 
-#option to exit
-p "type quit if done. Otherwise hit enter to keep going"
-user_input = gets.chomp
+#loop created for input of multiple names
+user_input = "no"
+until user_input == "quit"
 
+  puts "What is the spy's name?"
+  original_name = gets.chomp
+
+  #Runs name swapper to reverse first and last name method
+  name_flip = name_swapper(original_name)
+  p name_flip
+
+  #Runs letter encrypt for vowels and consonants
+  spy_name = spy_letter_encrypt(name_flip)
+  p spy_name
+
+  #New hash to store the name with corresponding spy names
+  spy_hash.store(original_name, spy_name)
+
+  #option to exit from loop from multiple inputs
+  p "type quit if done. Otherwise hit enter to keep going"
+  user_input = gets.chomp
 end
-#prints array names
-p code_names
+
+#prints spy_hash names
+spy_hash.each do |x, y|
+  puts "Name #{x}. Spy Name #{y}."
+end
+
+
 
