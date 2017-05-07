@@ -1,10 +1,12 @@
 #Create a game for 6.7 solo challenge
 
-# One user can enter a word (or phrase, if you would like your game to support that), and another user attempts to guess the word.
+# One user can enter a word (or phrase, if you would like your game to support that), 
+#  and another user attempts to guess the word.
 # Guesses are limited, and the number of guesses available is related to the length of the word.
 # Repeated guesses do not count against the user.
 # The guessing player receives continual feedback on the current state of the word. 
-# So if the secret word is "unicorn", the user will start out seeing something like "_ _ _ _ _ _ _", which would become "_ _ _ c _ _ _" after the user enters a guess of "c".
+# So if the secret word is "unicorn", the user will start out seeing something like "_ _ _ _ _ _ _", 
+#  which would become "_ _ _ c _ _ _" after the user enters a guess of "c".
 # The user should get a congratulatory message if they win, and a taunting message if they lose.
 
 
@@ -16,14 +18,24 @@ class GuessWord
 	def initialize
 		@magic_word = "popsicle"
 		#@counter set to word length + 2
-		@counter = (@magic_word.length + 2)
+		@counter = (@magic_word.length + 5)
 	end
 #method check_word 
-	def check_word(word)
-		letter_array = word.chars
-p @magic_word
-p @counter
-
+	def check_word(guess)
+#Convert magic_word to array
+		letter_array = @magic_word.split("")
+#Iterate through array to see if letters matches guess	
+		index = 0
+		while index < @magic_word.length
+			if letter_array[index] == guess
+				#print array with _ for empty spaces except for letter guessed
+				p guess
+			else
+				#print array with _ for empty spaces
+				p "_"
+			end
+		index += 1
+	end
 	end
 
 end
@@ -32,7 +44,7 @@ end
 #Tells user the rules and how many tries
 #puts "Can you guess the magic word? You only get #{counter} tries..."
 game = GuessWord.new
-game.check_word(apple)
+p game.check_word("p")
 
 #make loop here to allow user to input. Loop will have until for counter and if/elsif statements if  word is guessed.
 
