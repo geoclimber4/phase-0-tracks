@@ -13,12 +13,10 @@
 #game class
 class GuessWord
 # getter and setter method to acess variables
-#	attr_reader :magic_word, :is_over
-# getter method to allow only reading
 	attr_accessor :guesses_left, :user_progress, :magic_word, :is_over
 
-	def initialize
-		@magic_word = "popsicle"
+	def initialize(magic_word)
+		@magic_word = magic_word
 		#@guesses_left set to word length + 5
 		@guesses_left = (@magic_word.length + 5)
 #is_over created to end game
@@ -45,20 +43,19 @@ class GuessWord
 		@user_progress = user_array*""
 		p "So far you have #{user_progress}"
 		return @user_progress
-#previous failsafe to end game, delete in later testing
-		if @magic_word == @user_progress
-			@is_over = true
-		end
 	end
 end
 
 #user interface
-#Tells user the rules and how many tries
+#User 1 input: allows first person to set the magic word
+puts "User 2, cover your eyes. User 1, enter the magic word"
+magic_word = gets.chomp
 
-game = GuessWord.new
-puts "Can you guess the magic word? You only get #{game.guesses_left} tries..."
-
-
+#Starts the game
+game = GuessWord.new(magic_word)
+#Gives Instructions to user 2 with updated guesses left count
+puts "That's it for you User 1, now get User 2 over here."
+puts "Ok User 2, Can you guess the magic word? You only get #{game.guesses_left} tries..."
 #make loop here to allow user to input. Loop will have until for counter and if/elsif statements if  word is guessed.
 until game.is_over == true
 #User prompted for their guess
