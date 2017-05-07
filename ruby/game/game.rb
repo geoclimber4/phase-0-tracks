@@ -12,10 +12,10 @@
 
 #game class
 class GuessWord
-	attr_reader :magic_word
-	attr_accessor :guesses_left
-	attr_accessor :user_progress
-	attr_reader :is_over
+# getter and setter method to acess variables
+#	attr_reader :magic_word, :is_over
+# getter method to allow only reading
+	attr_accessor :guesses_left, :user_progress, :magic_word, :is_over
 
 	def initialize
 		@magic_word = "popsicle"
@@ -36,23 +36,16 @@ class GuessWord
 		index = 0
 		while index < @magic_word.length
 			if magic_word_array[index] == guess
-				#prints array with _ for empty spaces except for letter guessed
-				p guess
+				#updates array for the correct letter to replace _
 				user_array[index] = guess				
-			else
-				#print array with _ for empty spaces
-				p user_array[index]
-				#p "_"
-				#user_array[index] = "_"
 			end
-		#put code here to track user progress	
 		index += 1
 		end
-#need to track user
 #converts user array back to string for readable output		
 		@user_progress = user_array*""
-		p "Your word is #{user_progress}"
+		p "So far you have #{user_progress}"
 		return @user_progress
+#previous failsafe to end game, delete in later testing
 		if @magic_word == @user_progress
 			@is_over = true
 		end
@@ -63,23 +56,35 @@ end
 #Tells user the rules and how many tries
 
 game = GuessWord.new
-puts "Can you guess the magic word? You only get #{@guesses_left} tries..."
-
+puts "Can you guess the magic word? You only get #{game.guesses_left} tries..."
 
 
 #make loop here to allow user to input. Loop will have until for counter and if/elsif statements if  word is guessed.
-until @is_over == true
+until game.is_over == true
+#User prompted for their guess
 	p "Guess a letter"
 	letter = gets.chomp
-	@user_progress = game.check_word(letter)
-	if @is_over == false
-		p "Keep trying. You have #{@guesses_left}. Guess another letter"
-		p game.check_word(letter)
+#Saves output of game to user progress variable 
+	game.user_progress = game.check_word(letter)
+#option to lost game based on too many guesses
+	if game.guesses_left == 0
+		p "Sorry you lost. I'm not good at taunting messages"
+		game.is_over = true
+#option to win game if magic word matches user progress word
+	elsif game.magic_word == game.user_progress
+		p "You won!"
+		game.is_over = true
+#Loop continues with a status update on the game
+	else
+		p "Keep trying. You have #{(game.guesses_left - 1)} guesses left. Guess another letter"
+	#	p game.check_word(letter)
 	end
 # put counter here
-#	@guesses_left -= 1
+
+#	p "You have #{game.guesses_left} guesses left"
+	game.guesses_left = game.guesses_left - 1
 end
-p "You won with #{@guesses_left} guesses left!"
+p "Game over! Thanks for playing!"
 
 
 #after exit, either give congratulations or taunting message here
