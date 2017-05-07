@@ -23,13 +23,15 @@ class GuessWord
 		@guesses_left = (@magic_word.length + 5)
 #is_over created to end game
 		@is_over = false
+#creates a user progress variable to keep track of previous guesses
+		@user_progress = "_" * @magic_word.length
 	end
 #method check_word 
 	def check_word(guess)
 #Convert magic_word to array
 		magic_word_array = @magic_word.split("")
-#created new array to handle user solutions for easy display
-		user_array = []
+#created new array to handle user solutions for easy display. This should update each loop
+		user_array = @user_progress.split("")
 #Iterate through array to see if letters matches guess	
 		index = 0
 		while index < @magic_word.length
@@ -39,16 +41,18 @@ class GuessWord
 				user_array[index] = guess				
 			else
 				#print array with _ for empty spaces
-				p "_"
-				user_array[index] = "_"
+				p user_array[index]
+				#p "_"
+				#user_array[index] = "_"
 			end
 		#put code here to track user progress	
 		index += 1
 		end
 #need to track user
 #converts user array back to string for readable output		
-		@user_progress = user_array*" "
+		@user_progress = user_array*""
 		p "Your word is #{user_progress}"
+		return @user_progress
 		if @magic_word == @user_progress
 			@is_over = true
 		end
@@ -67,7 +71,7 @@ puts "Can you guess the magic word? You only get #{@guesses_left} tries..."
 until @is_over == true
 	p "Guess a letter"
 	letter = gets.chomp
-	p game.check_word(letter)
+	@user_progress = game.check_word(letter)
 	if @is_over == false
 		p "Keep trying. You have #{@guesses_left}. Guess another letter"
 		p game.check_word(letter)
