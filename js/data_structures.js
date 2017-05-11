@@ -11,6 +11,18 @@ function add_name(name) {
 	names.push(name);
 }
 
+var horses = {};
+
+for (var i = names.length - 1; i >= 0; i--) {
+	// horses.push {names[i]: colors[i];
+		horses[names[i]] = colors[i];
+}
+
+
+// var horses = {'names[0]': colors[0], 'Sea': colors[1]};
+// below code for testing only
+// var horses = {name: names[0], color: colors[0]}
+console.log(horses)
 
 // Driver Code
 add_color("black")
