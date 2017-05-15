@@ -1,3 +1,37 @@
+<<<<<<< HEAD
+// Declare 2 new arrays
+
+var colors = ["blue", "red", "fuchsia", "coral"];
+var names = ["Ed", "Seabiscuit", "American Pharoah", "Steve"];
+
+function add_color(color) {
+	colors.push(color);
+}
+
+function add_name(name) {
+	names.push(name);
+}
+
+var horses = {};
+
+for (var i = names.length - 1; i >= 0; i--) {
+	// horses.push {names[i]: colors[i];
+		horses[names[i]] = colors[i];
+}
+
+
+// var horses = {'names[0]': colors[0], 'Sea': colors[1]};
+// below code for testing only
+// var horses = {name: names[0], color: colors[0]}
+console.log(horses)
+
+// Driver Code
+add_color("black")
+add_name("Jack")
+
+console.log(colors)
+console.log(names)
+=======
 // // Declare 2 new arrays
 
 // var colors = ["blue", "red", "fuchsia", "coral"];
@@ -30,6 +64,7 @@
 
 // console.log(colors)
 // console.log(names)
+>>>>>>> 5a1c26c21f491f983689f1d127da880262d5eefa
 
 
 // Constructor function for car (release 2)
