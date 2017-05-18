@@ -40,5 +40,21 @@ Display a narrower selection of columns (fewer columns than all of them, in othe
 	Adam Adams|1934
 	vacant|2310
 
+	sqlite> SELECT apartment.name, apartment.number, buildings.building FROM apartment JOIN buildings ON apartment.building_id = buildings.id;
+	Jonny Smith|101|2320
+	Sally Jones|2B|2310
+	Don Johnson|1B|2304
+	Adam Adams|202|1934
+	vacant|1B|2310
+
 
 Delete an item that meets some condition (you can choose a condition that makes sense).
+
+	sqlite> DELETE FROM apartment WHERE name="vacant";
+	sqlite> SELECT apartment.name, apartment.number, buildings.building FROM apartment JOIN buildings ON apartment.building_id = buildings.id;
+	Jonny Smith|101|2320
+	Sally Jones|2B|2310
+	Don Johnson|1B|2304
+	Adam Adams|202|1934
+
+
