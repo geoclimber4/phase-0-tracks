@@ -1,0 +1,26 @@
+You've joined two tables before. How do you join three?
+	sqlite> SELECT businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment FROM reviews
+	   ...> LEFT OUTER JOIN users ON reviews.user_id=users.id
+	   ...> LEFT OUTER JOIN businesses ON reviews.business_id=businesses.id;
+	Grundy Hollow Wedding Chapel|Bradford|Pitt|1|Nothing lasts...
+	Lotus Yoga|Mandy|Kaling|5|Really found my chi
+	Lotus Yoga|Angela|Jolie|3|Great except Mandy wouldn't shut up
+
+
+There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment:
+	sqlite> SELECT businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment FROM reviews
+	   ...> LEFT OUTER JOIN users ON reviews.user_id=users.id
+	   ...> LEFT OUTER JOIN businesses ON reviews.business_id=businesses.id;
+	Grundy Hollow Wedding Chapel|Bradford|Pitt|1|Nothing lasts...
+	Lotus Yoga|Mandy|Kaling|5|Really found my chi
+	Lotus Yoga|Angela|Jolie|3|Great except Mandy wouldn't shut up
+
+
+
+How do you view the data of all three tables for just one particular business? 
+	sqlite> SELECT businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment FROM reviews
+	   ...> LEFT OUTER JOIN users ON reviews.user_id=users.id
+	   ...> LEFT OUTER JOIN businesses ON reviews.business_id=businesses.id
+	   ...> WHERE businesses.name="Lotus Yoga";
+	Lotus Yoga|Mandy|Kaling|5|Really found my chi
+	Lotus Yoga|Angela|Jolie|3|Great except Mandy wouldn't shut up
