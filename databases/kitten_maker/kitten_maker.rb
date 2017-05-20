@@ -1,6 +1,7 @@
 # OPERATION KITTEN EXPLOSION!
 
 # talk about Object Relational Mapping (ORM)
+# How do we take this database and make it useful.
 
 # require gems
 require 'sqlite3'
@@ -23,7 +24,7 @@ SQL
 db.execute(create_table_cmd)
 
 # add a test kitten
-# db.execute("INSERT INTO kittens (name, age) VALUES ('Bob', 10)")
+db.execute("INSERT INTO kittens (name, age) VALUES ('Bob', 10)")
 
 # add LOOOOTS of kittens!
 # so. many. kittens. 
@@ -32,13 +33,13 @@ def create_kitten(db, name, age)
   db.execute("INSERT INTO kittens (name, age) VALUES (?, ?)", [name, age])
 end
 
-10000.times do
+100.times do
   create_kitten(db, Faker::Name.name, 0)
 end
 
 # explore ORM by retrieving data
-# kittens = db.execute("SELECT * FROM kittens")
-# kittens.each do |kitten|
-#  puts "#{kitten['name']} is #{kitten['age']}"
-# end
+kittens = db.execute("SELECT * FROM kittens")
+kittens.each do |kitten|
+ puts "#{kitten['name']} is #{kitten['age']}"
+end
 
