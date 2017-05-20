@@ -21,3 +21,18 @@ db.execute(create_table)
 
 #add a test racer
 db.execute("INSERT INTO racers (name, race_class) VALUES ('Lance Armstrong', 'Pro')")
+
+
+def create_racer(db, name, race_class)
+	db.execute("INSERT INTO racers (name, race_class) VALUES (?,?)", [name, race_class])
+end
+
+10.times do
+	create_racer(db, Faker::Name.name, "sport")
+end
+
+racers = db.execute("SELECT * FROM racers")
+racers.each do |racer|
+	puts "#{racer['name']} is racing in the #{racer['race_class']} class"
+end
+ 
