@@ -51,3 +51,25 @@ end
 get '/contact/:address/:city/:state' do
   "<p>Mail to #{params[:address]} #{params[:city]}, #{params[:state]}</p>"
 end
+
+# add a great_job route that can take a person's name as a query 
+get '/great_job/' do
+  name = params[:name]
+  if name
+    "Great job #{name}!"
+  else
+    "Good job!"
+  end
+end
+
+
+# add a route that adds two numbers
+get '/add/' do
+  num1 = params[:num1]
+  num2 = params[:num2]
+  solution = num1.to_i + num2.to_i
+  "The answer is #{solution}"
+end
+
+
+
