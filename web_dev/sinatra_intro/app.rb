@@ -1,33 +1,53 @@
 # require gems
 require 'sinatra'
-require 'sinatra/reloader' if development?
 require 'sqlite3'
 
-set :public_folder, File.dirname(__FILE__) + '/static'
 
 db = SQLite3::Database.new("students.db")
 db.results_as_hash = true
 
-# show students on the home page
+# # write a basic GET route
+# # add a query parameter
+# # GET /
 get '/' do
-  @students = db.execute("SELECT * FROM students")
-  erb :home
+  "#{params[:name]} is #{params[:age]} years old."
 end
 
-get '/students/new' do
-  erb :new_student
+# # write a GET route with
+# # route parameters
+get '/about/:person' do
+  person = params[:person]
+  "#{person} is a programmer, and #{person} is learning Sinatra."
 end
 
-# create new students via
-# a form
-post '/students' do
-  db.execute("INSERT INTO students (name, campus, age) VALUES (?,?,?)", [params['name'], params['campus'], params['age'].to_i])
-  redirect '/'
+get '/:person_1/loves/:person_2' do
+  "#{params[:person_1]} loves #{params[:person_2]}"
 end
 
-get '/random' do
-  city = params[:city]
-  @students = db.execute("SELECT * FROM students")
-  @campus = db.execute("SELECT * FROM students WHERE campus=?",[city]) 
-  erb :randomstud
+# # write a GET route that retrieves
+# # all student data
+get '/students' do
+  students = db.execute("SELECT * FROM students")
+  response = ""
+  students.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+  end
+  response
+end
+
+# # write a GET route that retrieves
+# # a particular student
+
+get '/students/:id' do
+  student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
+  student.to_s
+end
+
+# add a /contact route that displays an address
+
+get '/contact/:address/:city/:state' do
+  "<p>Mail to #{params[:address]} #{params[:city]}, #{params[:state]}</p>"
 end
